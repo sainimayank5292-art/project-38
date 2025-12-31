@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Straw Hat Crew - Happy New Year 2026!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Pirata One', cursive, sans-serif;
+            background: linear-gradient(to bottom, #0a0a2a, #1a1a3a);
+            color: #FFD700;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            text-shadow: 0 0 10px #FF0000, 0 0 20px #FF4500;
+            margin-bottom: 10px;
+            animation: flicker 2s infinite alternate;
+            letter-spacing: 2px;
+        }
+        
+        .year-2026 {
+            font-size: 4rem;
+            color: #FFD700;
+            text-shadow: 0 0 15px #FFD700, 0 0 30px #FF8C00;
+            animation: pulse 1.5s infinite alternate;
+            display: inline-block;
+            transform: rotate(-5deg);
+            margin: 20px 0;
+        }
+        
+        .straw-hat-logo {
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+            margin: 0 auto 20px;
+            animation: rotate 10s infinite linear;
+        }
+        
+        .greeting-container {
+            background: rgba(0, 0, 0, 0.6);
+            border: 5px solid #8B4513;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .greeting-container::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite linear;
+            z-index: -1;
+        }
+        
+        .greeting-text {
+            font-size: 2.5rem;
+            line-height: 1.4;
+            text-shadow: 2px 2px 0 #8B0000;
+            animation: textWave 4s infinite ease-in-out;
+        }
+        
+        .straw-hat-crew {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+            perspective: 1000px;
+        }
+        
+        .crew-member {
+            width: 120px;
+            height: 180px;
+            position: relative;
+            transition: transform 0.5s;
+        }
+        
+        .crew-member:hover {
+            transform: translateY(-20px) scale(1.1);
+            z-index: 10;
+        }
+        
+        .crew-member img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+        }
+        
+        .luffy {
+            animation: bounce 2s infinite ease-in-out;
+        }
+        
+        .zoro {
+            animation: float 3s infinite ease-in-out;
+            animation-delay: 0.5s;
+        }
+        
+        .nami {
+            animation: bounce 2.5s infinite ease-in-out;
+            animation-delay: 1s;
+        }
+        
+        .usopp {
+            animation: float 3.5s infinite ease-in-out;
+            animation-delay: 1.5s;
+        }
+        
+        .sanji {
+            animation: bounce 2.2s infinite ease-in-out;
+            animation-delay: 0.8s;
+        }
+        
+        .chopper {
+            animation: float 2.8s infinite ease-in-out;
+            animation-delay: 0.3s;
+        }
+        
+        .robin {
+            animation: bounce 3s infinite ease-in-out;
+            animation-delay: 1.2s;
+        }
+        
+        .franky {
+            animation: float 3.2s infinite ease-in-out;
+            animation-delay: 0.7s;
+        }
+        
+        .brook {
+            animation: bounce 2.7s infinite ease-in-out;
+            animation-delay: 1.7s;
+        }
+        
+        .jinbe {
+            animation: float 3.8s infinite ease-in-out;
+            animation-delay: 2s;
+        }
+        
+        .name-tag {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            background: rgba(139, 0, 0, 0.9);
+            color: #FFD700;
+            padding: 3px 5px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .crew-member:hover .name-tag {
+            opacity: 1;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: #FFD700;
+            opacity: 0.8;
+            z-index: -1;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            font-size: 1.2rem;
+            color: #8B4513;
+            text-shadow: 1px 1px 0 #000;
+        }
+        
+        /* Animations */
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(-5deg); }
+            100% { transform: scale(1.1) rotate(-5deg); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        @keyframes textWave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            33% { transform: translateY(-15px) rotate(2deg); }
+            66% { transform: translateY(-10px) rotate(-2deg); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .year-2026 { font-size: 3rem; }
+            .greeting-text { font-size: 1.8rem; }
+            .crew-member { width: 90px; height: 135px; }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .year-2026 { font-size: 2.5rem; }
+            .greeting-text { font-size: 1.5rem; }
+            .crew-member { width: 70px; height: 105px; }
+            .straw-hat-crew { gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>STRAW HAT PIRATES</h1>
+            <svg class="straw-hat-logo" viewBox="0 0 100 100">
+                <path d="M50,20 C70,20 85,35 85,55 C85,75 70,90 50,90 C30,90 15,75 15,55 C15,35 30,20 50,20 Z" fill="#8B4513" stroke="#FFD700" stroke-width="3"/>
+                <circle cx="50" cy="40" r="10" fill="#FFD700"/>
+                <path d="M40,25 L60,25 L65,35 L35,35 Z" fill="#FF0000"/>
+                <path d="M50,55 L70,65 L65,75 L50,70 L35,75 L30,65 Z" fill="#8B4513"/>
+            </svg>
+            <div class="year-2026">2026</div>
+        </div>
+        
+        <div class="greeting-container">
+            <div class="greeting-text">
+                Ahoy Mateys!<br>
+                The Straw Hat Crew wishes you<br>
+                a <span style="color:#FF4500;">GRAND</span> and <span style="color:#1E90FF;">ADVENTUROUS</span><br>
+                Happy New Year 2026!
+            </div>
+        </div>
+        
+        <div class="straw-hat-crew">
+            <!-- Each crew member with their animation class -->
+            <div class="crew-member luffy">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9c0.svg" alt="Luffy">
+                <div class="name-tag">Luffy</div>
+            </div>
+            <div class="crew-member zoro">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f5e1.svg" alt="Zoro">
+                <div class="name-tag">Zoro</div>
+            </div>
+            <div class="crew-member nami">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4b0.svg" alt="Nami">
+                <div class="name-tag">Nami</div>
+            </div>
+            <div class="crew-member usopp">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f3f9.svg" alt="Usopp">
+                <div class="name-tag">Usopp</div>
+            </div>
+            <div class="crew-member sanji">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f35c.svg" alt="Sanji">
+                <div class="name-tag">Sanji</div>
+            </div>
+            <div class="crew-member chopper">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f98c.svg" alt="Chopper">
+                <div class="name-tag">Chopper</div>
+            </div>
+            <div class="crew-member robin">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4da.svg" alt="Robin">
+                <div class="name-tag">Robin</div>
+            </div>
+            <div class="crew-member franky">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f6e0.svg" alt="Franky">
+                <div class="name-tag">Franky</div>
+            </div>
+            <div class="crew-member brook">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f480.svg" alt="Brook">
+                <div class="name-tag">Brook</div>
+            </div>
+            <div class="crew-member jinbe">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f433.svg" alt="Jinbe">
+                <div class="name-tag">Jinbe</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>May your 2026 be filled with adventure, treasure, and nakama spirit!</p>
+            <p>Set sail for new horizons with the Straw Hat Crew!</p>
+        </div>
+    </div>
+
+    <script>
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#FFD700', '#FF4500', '#1E90FF', '#32CD32', '#8B4513'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Random properties
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const size = Math.random() * 10 + 5;
+                const left = Math.random() * 100;
+                const animationDuration = Math.random() * 3 + 2;
+                const animationDelay = Math.random() * 5;
+                
+                // Apply styles
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.backgroundColor = color;
+                confetti.style.left = `${left}vw`;
+                confetti.style.top = '-20px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.animation = `fall ${animationDuration}s linear ${animationDelay}s infinite`;
+                
+                document.body.appendChild(confetti);
+                
+                // Remove confetti after animation completes
+                setTimeout(() => {
+                    confetti.remove();
+                }, (animationDuration + animationDelay) * 1000);
+            }
+        }
+        
+        // Add falling animation for confetti
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Create confetti on load and every 10 seconds
+        window.addEventListener('load', () => {
+            createConfetti();
+            setInterval(createConfetti, 10000);
+        });
+        
+        // Add interactive click effect
+        document.addEventListener('click', function(e) {
+            // Create a temporary straw hat icon at click location
+            const hat = document.createElement('div');
+            hat.innerHTML = `
+                <svg width="40" height="40" viewBox="0 0 100 100">
+                    <path d="M50,20 C70,20 85,35 85,55 C85,75 70,90 50,90 C30,90 15,75 15,55 C15,35 30,20 50,20 Z" fill="#8B4513" stroke="#FFD700" stroke-width="2"/>
+                    <circle cx="50" cy="40" r="5" fill="#FFD700"/>
+                </svg>
+            `;
+            
+            hat.style.position = 'fixed';
+            hat.style.left = `${e.clientX - 20}px`;
+            hat.style.top = `${e.clientY - 20}px`;
+            hat.style.zIndex = '1000';
+            hat.style.pointerEvents = 'none';
+            hat.style.animation = 'floatUp 2s forwards';
+            
+            // Add float up animation
+            const floatStyle = document.createElement('style');
+            floatStyle.textContent = `
+                @keyframes floatUp {
+                    0% {
+                        transform: translateY(0) scale(1);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(-100px) scale(0);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(floatStyle);
+            
+            document.body.appendChild(hat);
+            
+            // Remove after animation
+            setTimeout(() => {
+                hat.remove();
+                floatStyle.remove();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
